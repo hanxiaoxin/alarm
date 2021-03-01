@@ -1,0 +1,18 @@
+@use '~$styles/config.scss';
+
+$prefix: #{config.$namespace}-breadcrumb;
+
+.#{$prefix}{
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  position: relative;
+
+  .theme-menu{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right:0;
+  }
+}

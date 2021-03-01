@@ -8,6 +8,8 @@ webpack.mode = 'production';
 
 webpack.devtool = false;
 
+webpack.output.publicPath = './';
+
 webpack.optimization = {
     minimize: true,
     minimizer: [

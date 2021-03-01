@@ -14,7 +14,7 @@ const config = {
         index: resolve('./src/index.jsx'),
     },
     output: {
-        publicPath: './',
+        publicPath: '/',
         path: resolve('./dist'),
         filename: 'js/[name].js'
     },
@@ -81,11 +81,12 @@ const config = {
     resolve: {
         extensions: ['.js', '.ts', '.jsx', '.tsx'],
         alias: {
-            '@styles': resolve('./src/assets/styles'),
-            '@images': resolve('./src/assets/images'),
-            '@components': resolve('./src/components'),
-            '@views': resolve('./src/views'),
-            '@store': resolve('./src/store'),
+            '$styles': resolve('./src/assets/styles'),
+            '$images': resolve('./src/assets/images'),
+            '$components': resolve('./src/components'),
+            '$views': resolve('./src/views'),
+            '$hooks': resolve('./src/hooks'),
+            '$contexts': resolve('./src/contexts'),
         }
     }
 };
