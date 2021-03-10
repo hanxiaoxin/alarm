@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
 import * as path from 'path';
 
@@ -11,7 +11,7 @@ export default defineConfig({
     mode: 'development',
     plugins: [reactRefresh()],
     server: {
-        port: 5000
+        port: 8080
     },
     css: {
         preprocessorOptions: {

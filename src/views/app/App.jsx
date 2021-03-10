@@ -1,16 +1,16 @@
 import React from "react";
 
-import {Layout, Menu, Breadcrumb} from 'antd';
-
-const {SubMenu} = Menu;
-const {Content, Sider} = Layout;
-
+import {Layout, Menu} from 'antd';
 import './App.scss';
 
 import PandaIcon from '$components/menu-icon/panda-icon';
-import BreadCrumbs from '$hooks/breadcrumb/breadcrumb';
+import LazyIcon from '$components/menu-icon/lazy-icon';
+import BreadCrumbs from '$components/breadcrumb/breadcrumb';
 
 import appContext from '$contexts/app-context';
+
+const {SubMenu} = Menu;
+const {Content, Sider} = Layout;
 
 export default class App extends React.Component {
     constructor(props) {
@@ -29,36 +29,45 @@ export default class App extends React.Component {
                 },
             }
         };
+
+        this.myRef = React.createRef();
     }
 
-    onCollapse(collapsed){
+    componentDidMount() {
+
+    }
+
+    onCollapse(collapsed) {
         this.setState({collapsed});
     }
 
-    toggleTheme(t){
+    toggleTheme(t) {
         const config = Object.assign({}, this.state.config);
         config.theme = t;
+        config.themes = ['blue', 'orange'];
         this.setState({
             config: config
         })
     }
 
     render() {
-        const { collapsed } = this.state;
+        const {collapsed} = this.state;
+
+        const items = [{name: 'Home'}, {name: 'Overview'}];
 
         return (
             <appContext.Provider value={this.state.config}>
                 <Layout className="apusic-app-view">
-                    <Layout style={{ minHeight: '100vh' }}>
+                    <Layout style={{minHeight: '100vh'}}>
                         <Sider width={200} collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
                             <div className="apusic-app-view-logo">
-                                智能告警服务
+                                {this.state.config.theme}
                             </div>
                             <Menu mode="inline" theme="dark" defaultSelectedKeys={['overview']}>
-                                <Menu.Item key="overview" icon={<PandaIcon />}>
+                                <Menu.Item key="overview" icon={<PandaIcon/>}>
                                     <span>概览</span>
                                 </Menu.Item>
-                                <SubMenu key="sub1" title="告警" icon={<PandaIcon/>}>
+                                <SubMenu key="sub1" title="告警" icon={<LazyIcon/>}>
                                     <Menu.Item key="event">告警事件</Menu.Item>
                                     <Menu.Item key="analyse">告警分析</Menu.Item>
                                 </SubMenu>
@@ -78,7 +87,7 @@ export default class App extends React.Component {
                             </Menu>
                         </Sider>
                         <Layout style={{padding: '0 24px 24px'}}>
-                            <BreadCrumbs items={[{ name: 'Home'}, { name: 'Overview'}]}/>
+                            <BreadCrumbs items={items}>{(username) => <div>{username}</div>}</BreadCrumbs>
                             <Content
                                 className="site-layout-background"
                                 style={{

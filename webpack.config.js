@@ -1,7 +1,7 @@
 const getWebpackConfig = require("./scripts/getWebpackConfig");
 
-const webpack = getWebpackConfig();
+const config = getWebpackConfig();
 
-webpack.mode = 'development';
+config.mode = 'development';
 
-module.exports = webpack;
+module.exports = config;

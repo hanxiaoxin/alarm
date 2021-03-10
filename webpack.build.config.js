@@ -2,15 +2,15 @@ const getWebpackConfig = require("./scripts/getWebpackConfig");
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-const webpack = getWebpackConfig();
+const config = getWebpackConfig();
 
-webpack.mode = 'production';
+config.mode = 'production';
 
-webpack.devtool = false;
+config.devtool = false;
 
-webpack.output.publicPath = './';
+config.output.publicPath = './';
 
-webpack.optimization = {
+config.optimization = {
     minimize: true,
     minimizer: [
         new TerserPlugin({}),
@@ -18,4 +18,4 @@ webpack.optimization = {
     ],
 }
 
-module.exports = webpack;
+module.exports = config;
