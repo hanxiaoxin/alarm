@@ -1,6 +1,8 @@
 const getWebpackConfig = require("./scripts/getWebpackConfig");
 const {ESBuildPlugin, ESBuildMinifyPlugin} = require('esbuild-loader');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const Visualizer = require('webpack-visualizer-plugin2');
+const path = require("path");
 
 
 const config = getWebpackConfig();
@@ -22,10 +24,26 @@ config.optimization = {
         new ESBuildMinifyPlugin({
             target: 'es2015'
         }),
-    ]
+    ],
+    splitChunks: {
+        chunks: 'async',
+        cacheGroups: {
+            vendors: {
+                test: /[\\/]node_modules[\\/]/,
+                priority: -10
+            },
+            default: {
+                minChunks: 1,
+                priority: -20,
+                reuseExistingChunk: true
+            }
+        }
+    },
 };
 
-config.plugins.push(new ESBuildPlugin(), new CssMinimizerPlugin());
+config.plugins.push(new ESBuildPlugin(), new CssMinimizerPlugin(), new Visualizer({
+    filename: path.join('..', 'stats', 'statistics.html'),
+}),);
 
 
 module.exports = config;

@@ -1,7 +1,6 @@
 const getWebpackConfig = require("./scripts/getWebpackConfig");
 const {ESBuildPlugin} = require('esbuild-loader');
 
-
 const config = getWebpackConfig();
 
 config.mode = 'development';

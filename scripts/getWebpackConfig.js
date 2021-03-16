@@ -82,6 +82,7 @@ const config = {
         extensions: ['.js', '.ts', '.jsx', '.tsx'],
         alias: {
             '$styles': resolve('./src/assets/styles'),
+            '$routers': resolve('./src/routers'),
             '$images': resolve('./src/assets/images'),
             '$components': resolve('./src/components'),
             '$views': resolve('./src/views'),

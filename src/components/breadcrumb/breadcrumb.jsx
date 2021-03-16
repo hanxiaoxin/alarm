@@ -17,6 +17,7 @@ export default function BreadCrumbList(props) {
     useEffect(() => {
         // 使用浏览器的 API 更新页面标题
         document.title = `You clicked times`;
+        console.log(divRef)
     });
 
     const menu = (

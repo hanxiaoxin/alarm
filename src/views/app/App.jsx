@@ -8,6 +8,7 @@ import LazyIcon from '$components/menu-icon/lazy-icon';
 import BreadCrumbs from '$components/breadcrumb/breadcrumb';
 
 import appContext from '$contexts/app-context';
+import AppRouter from "$routers/index.jsx";
 
 const {SubMenu} = Menu;
 const {Content, Sider} = Layout;
@@ -17,6 +18,7 @@ export default class App extends React.Component {
         super(props);
         this.onCollapse = this.onCollapse.bind(this);
         this.toggleTheme = this.toggleTheme.bind(this);
+        this.handleClick = this.handleClick.bind(this);
 
         this.state = {
             collapsed: false,
@@ -50,6 +52,13 @@ export default class App extends React.Component {
         })
     }
 
+    handleClick(e) {
+        const {match, location, history} = this.props;
+        console.log(e);
+        this.setState({current: e.key});
+        history.push("/page2");
+    };
+
     render() {
         const {collapsed} = this.state;
 
@@ -63,7 +72,8 @@ export default class App extends React.Component {
                             <div className="apusic-app-view-logo">
                                 {this.state.config.theme}
                             </div>
-                            <Menu mode="inline" theme="dark" defaultSelectedKeys={['overview']}>
+                            <Menu mode="inline" theme="dark" defaultSelectedKeys={['overview']}
+                                  onClick={this.handleClick}>
                                 <Menu.Item key="overview" icon={<PandaIcon/>}>
                                     <span>概览</span>
                                 </Menu.Item>
@@ -96,7 +106,7 @@ export default class App extends React.Component {
                                     minHeight: 280,
                                 }}
                             >
-                                Content
+                                <AppRouter/>
                             </Content>
                         </Layout>
                     </Layout>
