@@ -11,7 +11,7 @@ const resolve = (relativePath) => {
 
 const config = {
     entry: {
-        index: resolve('./src/index.jsx'),
+        index: [resolve('./src/index.jsx')],
     },
     output: {
         publicPath: '/',
@@ -89,6 +89,13 @@ const config = {
             '$hooks': resolve('./src/hooks'),
             '$contexts': resolve('./src/contexts'),
         }
+    },
+    devServer: {
+        lazy: false,
+        hot: true,
+        historyApiFallback: true,
+        compress: true,
+        filename: 'bundle.js',
     }
 };
 

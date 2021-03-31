@@ -23,6 +23,7 @@ export default defineConfig({
         alias: {
             '~$styles': resolve('./src/assets/styles'),
             '~$images': resolve('./src/assets/images'),
+            '$routers': resolve('./src/routers'),
             '$components': resolve('./src/components'),
             '$views': resolve('./src/views'),
             '$hooks': resolve('./src/hooks'),

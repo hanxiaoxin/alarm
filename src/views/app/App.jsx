@@ -54,7 +54,7 @@ export default class App extends React.Component {
 
     handleClick(e) {
         const {match, location, history} = this.props;
-        console.log(e);
+        console.log(this);
         this.setState({current: e.key});
         history.push("/page2");
     };
