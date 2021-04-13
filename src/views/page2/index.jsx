@@ -5,7 +5,7 @@ export default function Page2() {
     return (
         <div>
             <Button type="primary">Primary Button</Button>
-            <Button>Default Button</Button>
+            <Button>Default Button1</Button>
         </div>
     );
 }
